@@ -1,0 +1,255 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* Header with timestamp */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header h2 {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 200px;
+}
+
+.last-saved-time {
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    background: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* Container Styles */
+#container {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 4px;
+    min-height: 200px;
+}
+
+/* Message Wrapper Styles */
+.message-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    border-left: 3px solid #ddd;
+}
+
+/* Textarea Styles */
+.dynamic-textarea {
+    flex: 1;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 100px;
+    max-height: 300px;
+    color: #333;
+}
+
+.dynamic-textarea:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.dynamic-textarea::placeholder {
+    color: #999;
+}
+
+/* Read-only Note Display Styles */
+.note-display {
+    flex: 1;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    background: white;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    color: #333;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Add Element Button (Green) */
+button[onclick*="createMessage"] {
+    display: block;
+    margin: 0 auto 20px;
+    background: #28a745;
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+button[onclick*="createMessage"]:hover {
+    background: #218838;
+}
+
+/* Remove Button (Orange) */
+.remove-button {
+    background-color: #ff8c00;
+    color: white;
+    padding: 10px 18px;
+    height: fit-content;
+    min-width: 90px;
+}
+
+.remove-button:hover {
+    background-color: #e67e00;
+}
+
+/* Index Page Buttons (Neutral) */
+input[type="button"],
+.go-back-btn {
+    background: #6c757d;
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+input[type="button"]:hover,
+.go-back-btn:hover {
+    background: #5a6268;
+}
+
+/* Label Styles */
+label {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5em;
+    }
+
+    #container {
+        padding: 15px;
+        margin: 0 auto 20px;
+    }
+
+    .message-wrapper {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .dynamic-textarea,
+    .note-display {
+        min-height: 80px;
+    }
+
+    .remove-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    button[onclick*="createMessage"],
+    input[type="button"] {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+
+    #container {
+        padding: 10px;
+        margin: 0 auto 15px;
+    }
+
+    .message-wrapper {
+        margin-bottom: 10px;
+        padding: 8px;
+    }
+
+    .dynamic-textarea,
+    .note-display {
+        font-size: 13px;
+        min-height: 70px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 8px 15px;
+    }
+}
+
+/* Animation for new messages */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-wrapper {
+    animation: slideIn 0.3s ease;
+}
